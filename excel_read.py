@@ -1,4 +1,7 @@
 import pandas as pd
+from openpyxl import load_workbook
+from openpyxl.utils.dataframe import dataframe_to_rows
+from openpyxl.worksheet.table import Table, TableStyleInfo
 
 # Excel INVENTARIOS ALMACENES CHIH Y ALMAN
 ALMACENES_CHIH_Y_ALMAN_SKU = pd.read_excel(
@@ -19,17 +22,24 @@ ALMACENES_CHIH_Y_ALMAN_SKU.columns = [
 
 
 # Excel NUEVA PLANEACION NUEVAS MODIFICACIONES
+file_excel = (
+    "C:\\Users\\braya\\Downloads\\proessa\\NUEVA PLANEACION NUEVAS MODIFICACIONES.xlsx"
+)
+sheet_name = "INVENTARIO ACTUAL "
 NUEVA_PLANEACION_INVENTARIO_ACTUAL = pd.read_excel(
-    "C:\\Users\\braya\\Downloads\\proessa\\NUEVA PLANEACION NUEVAS MODIFICACIONES (1).xlsx",
-    sheet_name="INVENTARIO ACTUAL ",
+    file_excel,
+    sheet_name=sheet_name,
 )
 
 
 # Conjuncion excel inventarios
-sku_inventary = ALMACENES_CHIH_Y_ALMAN_SKU[["SKU", "INVENTARIO"]]
+def parse_inventary():
+    sku_inventary = ALMACENES_CHIH_Y_ALMAN_SKU[["SKU", "INVENTARIO"]]
 
-for index, row in sku_inventary.iterrows():
-    sku_inventary.at[index, "INVENTARIO"] *= 1000
+    for index, row in sku_inventary.iterrows():
+        sku_inventary.at[index, "INVENTARIO"] *= 1000
+
+        return sku_inventary
 
 
 def join_excel(excel1, excel2):
@@ -44,4 +54,21 @@ def join_excel(excel1, excel2):
     return excel1
 
 
-print(join_excel(NUEVA_PLANEACION_INVENTARIO_ACTUAL, sku_inventary))
+update_excel = join_excel(NUEVA_PLANEACION_INVENTARIO_ACTUAL, parse_inventary())
+
+
+wb = load_workbook(file_excel)
+
+ws = wb[sheet_name]
+
+
+ws.delete_rows(2, ws.max_row)
+df = pd.DataFrame(update_excel)
+
+for row in dataframe_to_rows(df, index=False, header=True):
+    ws.append(row)
+
+
+ws.delete_rows(2)
+
+wb.save(file_excel)
