@@ -1,30 +1,16 @@
 import pandas as pd
 from openpyxl import load_workbook
 from openpyxl.utils.dataframe import dataframe_to_rows
-from openpyxl.worksheet.table import Table, TableStyleInfo
 
-# Excel INVENTARIOS ALMACENES CHIH Y ALMAN
-ALMACENES_CHIH_Y_ALMAN_SKU = pd.read_excel(
-    "C:\\Users\\braya\\Downloads\\proessa\\INVENTARIOS ALMACENES CHIH Y ALMAN.xlsx",
+# Leer los archivos Excel con pandas
+SKU_COMPRAS = pd.read_excel(
+    "C:\\Users\\braya\\Downloads\\proessa\\Proesmma_Email\\CONTROL DE ALMACEN - NUEVO.xlsm",
     sheet_name="SKU - COMPRAS",
-    header=2,
+    header=0,
 )
 
-ALMACENES_CHIH_Y_ALMAN_SKU.columns = [
-    "SKU",
-    "MEDIDA DE BOLA Y DESCRIPCION",
-    "INVENTARIO",
-    "PROGRAMADO PARA ENTREGA",
-    "ENTRADAS DE IMPO",
-    "SALIDAS A CLIENTES",
-    "INVENTARIO REAL DISPONIBLE",
-]
-
-
-# Excel NUEVA PLANEACION NUEVAS MODIFICACIONES
-file_excel = (
-    "C:\\Users\\braya\\Downloads\\proessa\\NUEVA PLANEACION NUEVAS MODIFICACIONES.xlsx"
-)
+# Leer el archivo Excel donde se harán las modificaciones
+file_excel = "C:\\Users\\braya\\Downloads\\proessa\\Proesmma_Email\\NUEVA PLANEACION NUEVAS MODIFICACIONES.xlsx"
 sheet_name = "INVENTARIO ACTUAL "
 NUEVA_PLANEACION_INVENTARIO_ACTUAL = pd.read_excel(
     file_excel,
@@ -32,25 +18,23 @@ NUEVA_PLANEACION_INVENTARIO_ACTUAL = pd.read_excel(
 )
 
 
-# Conjuncion excel inventarios
+# Función para parsear el inventario
 def parse_inventary():
-    sku_inventary = ALMACENES_CHIH_Y_ALMAN_SKU[["SKU", "INVENTARIO"]]
+    sku_inventary = SKU_COMPRAS[["SKU", "INVENTARIO (TON)"]]
+    sku_inventary.loc[:, "INVENTARIO (TON)"] = sku_inventary["INVENTARIO (TON)"].astype(
+        int
+    )
+    return sku_inventary
 
-    for index, row in sku_inventary.iterrows():
-        sku_inventary.at[index, "INVENTARIO"] *= 1000
 
-        return sku_inventary
-
-
+# Función para unir los Excel y actualizar los datos
 def join_excel(excel1, excel2):
-    mapeo_inventario = excel2.set_index("SKU")["INVENTARIO"].to_dict()
-
+    mapeo_inventario = excel2.set_index("SKU")["INVENTARIO (TON)"].to_dict()
     excel1["INVENTARIO FISICO "] = (
         excel1["ID PRODUCTO "]
         .map(mapeo_inventario)
         .fillna(excel1["INVENTARIO FISICO "])
     )
-
     return excel1
 
 
@@ -58,17 +42,28 @@ update_excel = join_excel(NUEVA_PLANEACION_INVENTARIO_ACTUAL, parse_inventary())
 
 
 wb = load_workbook(file_excel)
-
 ws = wb[sheet_name]
 
 
+comments = {}
+for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
+    for cell in row:
+        if cell.comment:
+            comments[cell.coordinate] = cell.comment
+
+
 ws.delete_rows(2, ws.max_row)
-df = pd.DataFrame(update_excel)
 
-for row in dataframe_to_rows(df, index=False, header=True):
-    ws.append(row)
+for r_idx, row in enumerate(
+    dataframe_to_rows(update_excel, index=False, header=True), 1
+):
+    for c_idx, value in enumerate(row, 1):
+        cell = ws.cell(row=r_idx, column=c_idx, value=value)
+        coord = cell.coordinate
+        if coord in comments:
+            cell.comment = comments[coord]
 
-
-ws.delete_rows(2)
 
 wb.save(file_excel)
+
+print(NUEVA_PLANEACION_INVENTARIO_ACTUAL["INVENTARIO FISICO "])
