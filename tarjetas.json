@@ -1,0 +1,218 @@
+{
+  "CHIH. TARJETA ALMACEN": {
+    "Bola 1/2": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "B",
+      "toColumn": "H"
+    },
+    "Bola 3/4": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "J",
+      "toColumn": "P"
+    },
+    "Bola 1.0": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "R",
+      "toColumn": "X"
+    },
+    "BOLA 40 MM 2-3%": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "Z",
+      "toColumn": "AF"
+    },
+    "BOLA 40 MM 18-20%": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "AH",
+      "toColumn": "AN"
+    },
+    "BOLA 1.5": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "AP",
+      "toColumn": "AV"
+    },
+    "BOLA 2.0": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "AX",
+      "toColumn": "BD"
+    },
+    "BOLA 50 MM A/CR 1-2%": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "BF",
+      "toColumn": "BL"
+    },
+    "BOLA 50 MM A/CR 18-20%": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "BN",
+      "toColumn": "BT"
+    },
+    "BOLA 2.5": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "BV",
+      "toColumn": "CB"
+    },
+    "BOLA 3.0\" A/CR 10-13%": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "CD",
+      "toColumn": "CJ"
+    },
+    "BOLA 3.0\" A/CR 18-20%": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "CL",
+      "toColumn": "CR"
+    },
+    "BOLA 3.0": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "CT",
+      "toColumn": "CZ"
+    },
+    "BOLA 3.2": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "DB",
+      "toColumn": "DH"
+    },
+    "BOLA 3.5": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "DJ",
+      "toColumn": "DP"
+    },
+    "BOLA 4.0": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "DR",
+      "toColumn": "DX"
+    },
+    "BOLA 5.0": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "DZ",
+      "toColumn": "EF"
+    }
+  },
+  "FORJACHISA": {
+    "Bola 2.0": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "B",
+      "toColumn": "H"
+    },
+    "Bola 2.5": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "J",
+      "toColumn": "P"
+    },
+    "Bola 3.0": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "R",
+      "toColumn": "X"
+    },
+    "BOLA 3.5": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "Z",
+      "toColumn": "AF"
+    },
+    "BOLA 5.0": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "AH",
+      "toColumn": "AN"
+    }
+  },
+  "ALMAN TARJETA BOLA FORJADA": {
+    "Bola 1/2 FORJADA": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "B",
+      "toColumn": "H"
+    },
+    "Bola 5/8 FORJADA": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "J",
+      "toColumn": "P"
+    },
+    "Bola 1.0 FORJADA": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "R",
+      "toColumn": "X"
+    },
+    "BOLA 1.5 FORJADA": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "Z",
+      "toColumn": "AF"
+    },
+    "BOLA 2.0 FORJADA": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "AH",
+      "toColumn": "AN"
+    },
+    "BOLA 2.5 FORJADA": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "AP",
+      "toColumn": "AV"
+    },
+    "BOLA 2.5\" FORJADA CHIHUAHUA": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "AX",
+      "toColumn": "BD"
+    },
+    "BOLA 3.0\" FORJADA CHIHUAHUA": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "BF",
+      "toColumn": "BL"
+    },
+    "BOLA 3.0\" FORJADA": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "BN",
+      "toColumn": "BT"
+    },
+    "BOLA 3.2\" FORJADA": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "BV",
+      "toColumn": "CB"
+    },
+    "BOLA 3.5\" FORJADA": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "CD",
+      "toColumn": "CJ"
+    },
+    "BOLA 4.5\" FORJADA": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "CL",
+      "toColumn": "CR"
+    },
+    "BOLA 5.0\" FORJADA": {
+      "fromRow": 4,
+      "toRow": 805,
+      "fromColumn": "CT",
+      "toColumn": "CZ"
+    }
+  }
+}
