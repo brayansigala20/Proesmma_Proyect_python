@@ -3,7 +3,7 @@ import pandas as pd
 from openpyxl.comments import Comment
 import os
 
-file_excel = "C:\\Users\\braya\\Downloads\\proessa\\NUEVA PLANEACION NUEVAS MODIFICACIONES (1).xlsx"
+file_excel = "C:\\Users\\braya\\Downloads\\proessa\\Proesmma_Email\\NUEVA PLANEACION NUEVAS MODIFICACIONES.xlsx"
 sheet_name = "INVENTARIO ACTUAL "
 NUEVA_PLANEACION_INVENTARIO_ACTUAL = pd.read_excel(
     file_excel,
@@ -59,6 +59,6 @@ fileRemovePath = "C:\\Users\\braya\\Downloads\\proessa\\ExcelVar_Temporal.xlsx"
 if os.path.exists(fileRemovePath):
 
     os.remove(fileRemovePath)
-    print(f"Archivo {fileRemovePath} eliminado exitosamente.")
+    # print(f"Archivo {fileRemovePath} eliminado exitosamente.")
 else:
     print(f"El archivo {fileRemovePath} no existe.")
